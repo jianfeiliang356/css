@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap');
+
+:root {
+    --apple-bg: #f5f5f7;
+    --apple-card: #ffffff;
+    --apple-text: #1d1d1f;
+    --apple-gray: #86868b;
+    --apple-blue: #0071e3;
+    --apple-green: #34c759;
+    --apple-red: #ff3b30;
+    --apple-orange: #ff9500;
+    --apple-purple: #af52de;
+    --apple-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --apple-radius: 18px;
+    --apple-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--apple-bg);
+    color: var(--apple-text);
+}
+
+/* 标题 -A -B -C -D */
+.title-A { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em; }
+.title-B { font-size: 2rem; font-weight: 600; letter-spacing: -0.015em; }
+.title-C { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; }
+.title-D { font-size: 1.25rem; font-weight: 500; color: var(--apple-gray); }
+
+/* 按钮 -A -B -C -D + 颜色变体 */
+.btn-A, .btn-A-green, .btn-A-red, .btn-A-orange { padding:12px 28px; font-size:1.1rem; font-weight:600; border-radius:9999px; color:white; border:none; cursor:pointer; transition:var(--apple-transition); box-shadow:var(--apple-shadow); }
+.btn-A { background:var(--apple-blue); }
+.btn-A-green { background:var(--apple-green); }
+.btn-A-red { background:var(--apple-red); }
+.btn-A-orange { background:var(--apple-orange); }
+.btn-A:hover { transform:translateY(-2px); }
+
+.btn-B { padding:10px 24px; font-size:1rem; font-weight:500; border-radius:12px; background:white; color:var(--apple-text); border:1.5px solid #d2d2d7; cursor:pointer; }
+.btn-B:hover { border-color:var(--apple-blue); color:var(--apple-blue); }
+
+.btn-C { padding:14px 32px; font-size:1.05rem; font-weight:600; border-radius:9999px; background:linear-gradient(135deg,var(--apple-purple),var(--apple-blue)); color:white; border:none; cursor:pointer; box-shadow:0 8px 25px rgba(175,82,222,0.3); }
+.btn-C:hover { transform:scale(1.05); }
+
+.btn-D { padding:8px 20px; font-size:0.95rem; font-weight:500; border-radius:9999px; background:transparent; color:var(--apple-blue); border:2px solid var(--apple-blue); cursor:pointer; }
+.btn-D:hover { background:var(--apple-blue); color:white; }
+
+/* 卡片 */
+.card-A { background:var(--apple-card); border-radius:var(--apple-radius); padding:28px; box-shadow:var(--apple-shadow); transition:var(--apple-transition); border:1px solid #f0f0f0; }
+.card-A:hover { transform:translateY(-8px); box-shadow:0 20px 40px rgba(0,0,0,0.12); }
+
+.card-B { background:rgba(255,255,255,0.85); backdrop-filter:blur(20px); border-radius:20px; padding:24px; border:1px solid rgba(0,0,0,0.08); }
+.card-C { background:linear-gradient(145deg,#ffffff,#f8f8f8); border-radius:24px; padding:32px; box-shadow:0 15px 35px rgba(0,0,0,0.1); }
+.card-D { background:white; border-radius:16px; padding:20px; border:1px solid #e5e5e7; }
+
+/* 输入框 */
+.input-A { width:100%; padding:14px 20px; border-radius:12px; border:1.5px solid #d2d2d7; font-size:1.05rem; transition:var(--apple-transition); }
+.input-A:focus { outline:none; border-color:var(--apple-blue); box-shadow:0 0 0 4px rgba(0,113,227,0.15); }
+
+.input-B { width:100%; padding:16px 24px; border-radius:9999px; border:none; background:#f5f5f7; }
+.input-B:focus { background:white; box-shadow:var(--apple-shadow); }
+
+/* 更多组件（可继续扩展） */
+.badge-A { padding:4px 12px; font-size:0.8rem; font-weight:600; border-radius:9999px; background:var(--apple-blue); color:white; display:inline-block; }
+.glass-A { background:rgba(255,255,255,0.75); backdrop-filter:blur(40px); border:1px solid rgba(255,255,255,0.6); }
+.text-gradient-A { background:linear-gradient(90deg,var(--apple-blue),var(--apple-purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:700; }
