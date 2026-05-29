@@ -1,153 +1,107 @@
 @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap');
 
-/* ==================== Apple 风格组件库 - 隔离版 ==================== */
-.apple-style {
-    --apple-bg: #f5f5f7;
-    --apple-card: #ffffff;
-    --apple-text: #1d1d1f;
-    --apple-gray: #86868b;
-    --apple-blue: #0071e3;
-    --apple-green: #34c759;
-    --apple-red: #ff3b30;
-    --apple-orange: #ff9500;
-    --apple-purple: #af52de;
-    --apple-pink: #ff2d55;
-    --apple-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    --apple-shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
-    --apple-radius: 18px;
-    --apple-radius-sm: 12px;
-    --apple-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* 只在 .apple-style 容器内生效，防止污染全局 */
+/* ==================== Apple 风格 - 极致隔离版（适合 CMS） ==================== */
 .apple-style,
 .apple-style * {
-    box-sizing: border-box;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    box-sizing: border-box !important;
 }
 
-.apple-style {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.6;
-}
+/* 只针对 .apple-style 内部生效，最大程度避免污染 */
+.apple-style .title-A { font-size: 3rem !important; font-weight: 700 !important; letter-spacing: -0.03em !important; color: #1d1d1f !important; }
+.apple-style .title-B { font-size: 2.2rem !important; font-weight: 600 !important; letter-spacing: -0.02em !important; color: #1d1d1f !important; }
+.apple-style .title-C { font-size: 1.6rem !important; font-weight: 600 !important; letter-spacing: -0.01em !important; color: #1d1d1f !important; }
+.apple-style .title-D { font-size: 1.1rem !important; font-weight: 500 !important; color: #86868b !important; }
 
-/* ======================== 标题 ======================== */
-.apple-style .title-A { font-size: 3rem; font-weight: 700; letter-spacing: -0.03em; color: var(--apple-text); }
-.apple-style .title-B { font-size: 2.2rem; font-weight: 600; letter-spacing: -0.02em; color: var(--apple-text); }
-.apple-style .title-C { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; color: var(--apple-text); }
-.apple-style .title-D { font-size: 1.1rem; font-weight: 500; color: var(--apple-gray); }
-
-/* ======================== 按钮 ======================== */
+/* 按钮 */
 .apple-style .btn-A,
 .apple-style .btn-A-green,
 .apple-style .btn-A-red,
 .apple-style .btn-A-purple,
 .apple-style .btn-A-pink {
-    padding: 14px 32px; 
-    font-size: 1.1rem; 
-    font-weight: 600; 
-    border-radius: 9999px;
-    color: white; 
-    border: none; 
-    cursor: pointer; 
-    box-shadow: var(--apple-shadow);
-    transition: var(--apple-transition);
+    padding: 14px 32px !important; 
+    font-size: 1.1rem !important; 
+    font-weight: 600 !important; 
+    border-radius: 9999px !important;
+    color: white !important; 
+    border: none !important; 
+    cursor: pointer !important; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background: #0071e3 !important;
 }
-.apple-style .btn-A { background: var(--apple-blue); }
-.apple-style .btn-A-green { background: var(--apple-green); }
-.apple-style .btn-A-red { background: var(--apple-red); }
-.apple-style .btn-A-purple { background: var(--apple-purple); }
-.apple-style .btn-A-pink { background: var(--apple-pink); }
-.apple-style .btn-A:hover { transform: translateY(-3px); box-shadow: var(--apple-shadow-lg); }
+.apple-style .btn-A-green { background: #34c759 !important; }
+.apple-style .btn-A-red { background: #ff3b30 !important; }
+.apple-style .btn-A-purple { background: #af52de !important; }
+.apple-style .btn-A-pink { background: #ff2d55 !important; }
 
 .apple-style .btn-B {
-    padding:12px 28px; font-size:1rem; font-weight:500; border-radius:14px;
-    background:white; color:var(--apple-text); border:1.5px solid #d2d2d7;
-    cursor: pointer;
+    padding:12px 28px !important; font-size:1rem !important; font-weight:500 !important; 
+    border-radius:14px !important; background:white !important; color:#1d1d1f !important; 
+    border:1.5px solid #d2d2d7 !important;
 }
-.apple-style .btn-B:hover { border-color:var(--apple-blue); color:var(--apple-blue); }
-
 .apple-style .btn-C {
-    padding:16px 36px; font-size:1.05rem; font-weight:600; border-radius:9999px;
-    background:linear-gradient(135deg,var(--apple-purple),var(--apple-blue));
-    color:white;
+    padding:16px 36px !important; font-size:1.05rem !important; font-weight:600 !important; 
+    border-radius:9999px !important; background:linear-gradient(135deg,#af52de,#0071e3) !important; color:white !important;
 }
-.apple-style .btn-C:hover { transform:scale(1.06); }
-
 .apple-style .btn-D {
-    padding:10px 24px; font-size:0.95rem; font-weight:500; border-radius:9999px;
-    background:transparent; color:var(--apple-blue); border:2px solid var(--apple-blue);
+    padding:10px 24px !important; font-size:0.95rem !important; font-weight:500 !important; 
+    border-radius:9999px !important; background:transparent !important; color:#0071e3 !important; 
+    border:2px solid #0071e3 !important;
 }
-.apple-style .btn-D:hover { background:var(--apple-blue); color:white; }
 
-/* ======================== 卡片 ======================== */
+/* 卡片 */
 .apple-style .card-A,
 .apple-style .card-B,
 .apple-style .card-C,
 .apple-style .card-D {
-    background: var(--apple-card); 
-    border-radius: var(--apple-radius);
-    padding: 32px; 
-    box-shadow: var(--apple-shadow);
-}
-.apple-style .card-A:hover { transform: translateY(-12px); box-shadow: var(--apple-shadow-lg); }
-.apple-style .card-B { 
-    background: rgba(255,255,255,0.85); 
-    backdrop-filter: blur(30px); 
-    border:1px solid rgba(0,0,0,0.06); 
+    background: #ffffff !important; 
+    border-radius: 18px !important;
+    padding: 32px !important; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
 }
 
-/* ======================== 导航 & 徽章 ======================== */
+/* 导航 & 徽章 */
 .apple-style .nav-A {
-    display: flex; 
-    background: rgba(255,255,255,0.92); 
-    backdrop-filter: blur(40px);
-    padding: 8px; 
-    border-radius: 9999px; 
-    box-shadow: var(--apple-shadow); 
-    width: fit-content;
+    display: flex !important; 
+    background: rgba(255,255,255,0.92) !important; 
+    padding: 8px !important; 
+    border-radius: 9999px !important; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
 }
 .apple-style .nav-item-A {
-    padding: 10px 28px; 
-    border-radius: 9999px; 
-    font-weight: 500; 
-    cursor: pointer; 
-    transition: var(--apple-transition);
+    padding: 10px 28px !important; 
+    border-radius: 9999px !important; 
+    font-weight: 500 !important; 
+    cursor: pointer !important;
 }
 .apple-style .nav-item-A.active { 
-    background: var(--apple-blue); 
-    color: white; 
+    background: #0071e3 !important; 
+    color: white !important; 
 }
 
 .apple-style .badge-A { 
-    padding: 6px 16px; 
-    font-size: 0.85rem; 
-    font-weight: 600; 
-    border-radius: 9999px; 
-    background: var(--apple-blue); 
-    color: white; 
-    display: inline-block; 
-}
-.apple-style .badge-B { 
-    padding: 5px 14px; 
-    background: #f5f5f7; 
-    color: var(--apple-gray); 
-    border: 1px solid #e5e5e7; 
-    border-radius: 9999px; 
-    display: inline-block; 
+    padding: 6px 16px !important; 
+    font-size: 0.85rem !important; 
+    font-weight: 600 !important; 
+    border-radius: 9999px !important; 
+    background: #0071e3 !important; 
+    color: white !important; 
+    display: inline-block !important; 
 }
 
-/* ======================== 提示框 ======================== */
+/* 提示框 */
 .apple-style .alert-A { 
-    padding: 20px; 
-    border-radius: 16px; 
-    background: #fff0f0; 
-    border-left: 6px solid var(--apple-red); 
-    color: #c42b1c; 
+    padding: 20px !important; 
+    border-radius: 16px !important; 
+    background: #fff0f0 !important; 
+    border-left: 6px solid #ff3b30 !important; 
+    color: #c42b1c !important; 
 }
 .apple-style .alert-B { 
-    padding: 20px; 
-    border-radius: 16px; 
-    background: #e8f5e8; 
-    border-left: 6px solid var(--apple-green); 
-    color: #1e7e34; 
+    padding: 20px !important; 
+    border-radius: 16px !important; 
+    background: #e8f5e8 !important; 
+    border-left: 6px solid #34c759 !important; 
+    color: #1e7e34 !important; 
 }
