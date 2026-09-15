@@ -1,19 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap');
-
 /* ==================== Apple 风格 - 完整隔离版 v12 ==================== */
-
 .apple-style,
 .apple-style * {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     box-sizing: border-box !important;
 }
-
 /* 标题 */
 .apple-style .title-A { font-size: 2.8rem !important; font-weight: 700 !important; letter-spacing: -0.03em !important; color: #1d1d1f !important; }
 .apple-style .title-B { font-size: 2.1rem !important; font-weight: 600 !important; letter-spacing: -0.02em !important; color: #1d1d1f !important; }
 .apple-style .title-C { font-size: 1.65rem !important; font-weight: 600 !important; letter-spacing: -0.01em !important; color: #1d1d1f !important; }
 .apple-style .title-D { font-size: 1.15rem !important; font-weight: 500 !important; color: #86868b !important; }
-
 /* 按钮 */
 .apple-style .btn-A,
 .apple-style .btn-A-green,
@@ -34,7 +30,6 @@
 .apple-style .btn-A-red { background: #ff3b30 !important; }
 .apple-style .btn-A-purple { background: #af52de !important; }
 .apple-style .btn-A-pink { background: #ff2d55 !important; }
-
 /* 卡片 */
 .apple-style .card-A,
 .apple-style .card-B,
@@ -46,11 +41,9 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
     border: 1px solid #f0f0f0 !important;
 }
-
 /* 提示框 */
 .apple-style .alert-A { padding: 24px !important; border-radius: 16px !important; background: #fff0f0 !important; border-left: 6px solid #ff3b30 !important; color: #c42b1c !important; }
 .apple-style .alert-B { padding: 24px !important; border-radius: 16px !important; background: #e8f5e8 !important; border-left: 6px solid #34c759 !important; color: #1e7e34 !important; }
-
 /* 进度条 */
 .apple-style .progress-A {
     height: 8px !important;
@@ -64,7 +57,6 @@
     background: linear-gradient(90deg, #0071e3, #40a9ff) !important;
     border-radius: 9999px !important;
 }
-
 /* 渐变分界线 */
 .apple-style .divider-blue {
     height: 4px !important;
@@ -86,4 +78,600 @@
     border: none !important;
     border-radius: 9999px !important;
     margin: 28px 0 !important;
+}
+
+
+/* ==============================================
+   追加：yxq‑article 文章排版样式 v1.0
+   ============================================== */
+
+/* ==========================================================================
+   亿鑫泉 · 文章内容样式  yxq-article.css   v1.0
+   --------------------------------------------------------------------------
+   【用途】
+   网站「文章内容 / 内容详情」区域排版样式。文章正文只需包在
+   <div class="yxq-article"> …… </div> 内，即可自动应用整套排版。
+   【依赖】
+   Font Awesome 6.4.0 图标库（图标类形如 <i class="fa-solid fa-egg">），
+   页面 <head> 中需引用：
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   【命名规范】
+   所有类名以 yxq- 为前缀，避免与网站全局样式冲突；
+   元素级样式均限定在 .yxq-article 作用域内，不会影响页面其他区域。
+   【组件速查表】（AI 生成正文时按此使用）
+   ┌──────────────────┬──────────────────────────────────────────────┐
+   │ 类名             │ 用途 / 内部结构                              │
+   ├──────────────────┼──────────────────────────────────────────────┤
+   │ .yxq-pill        │ 顶部标签胶囊，如「集蛋带·选购指南」          │
+   │ .yxq-lead        │ 导语段（标题下第一段，可带 class）            │
+   │ .yxq-chips       │ 标签行容器，子元素用 <span>，自动胶囊化       │
+   │ .yxq-chip        │ 文中要点标签（配合 .yxq-chips2 容器）         │
+   │ .yxq-toc         │ 本文导读目录：h3 + ul > li > a，可带 #锚点     │
+   │ .yxq-h-sec       │ 章节标题行：<span class="ic">图标</span>      │
+   │                  │   + h2 + <span class="line"></span>           │
+   │ .yxq-note        │ 提示框：<i 图标> + 文字（div 包裹）            │
+   │ .yxq-grid        │ 卡片网格容器（默认三列，移动端自动单列）       │
+   │ .yxq-card        │ 卡片：> i 图标 + h3 + p                       │
+   │ .yxq-concl       │ 结语深色块：h2 + p                            │
+   │ .yxq-cta         │ CTA 按钮组，子元素 <span> 为金色胶囊按钮      │
+   │ .yxq-list-check  │ 对勾列表：ul > li，自动显示金色对勾图标        │
+   └──────────────────┴──────────────────────────────────────────────┘
+   【元素级样式】（无需加类名，直接写标签即可）
+   h1~h4、p、a、ul/ol/li、blockquote、table/th/td、img/figure/figcaption、
+   code/pre、hr、mark、strong、em、del、small、iframe/video。
+   【工具类】
+   .yxq-center 居中；.yxq-muted 弱化文字。
+   ========================================================================== */
+/* ---------- 基础容器 ---------- */
+.yxq-article {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: #2a3342;
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 10px 6px 40px;
+    -webkit-font-smoothing: antialiased;
+    word-break: break-word;
+}
+/* ---------- 标题层级 ---------- */
+.yxq-article h1 {
+    font-size: 30px;
+    line-height: 1.45;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: #18202e;
+    margin: 0 0 16px;
+}
+.yxq-article h1::after {
+    content: "";
+    display: block;
+    width: 46px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #d9a441, #e7b85c);
+    margin-top: 12px;
+}
+.yxq-article h2 {
+    font-size: 21px;
+    line-height: 1.4;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: #18202e;
+    margin: 38px 0 14px;
+}
+.yxq-article h2::after {
+    content: "";
+    display: block;
+    width: 36px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #d9a441, #e7b85c);
+    margin-top: 8px;
+}
+.yxq-article h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1b2434;
+    margin: 26px 0 10px;
+}
+.yxq-article h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1b2434;
+    margin: 20px 0 8px;
+}
+/* ---------- 段落与行内元素 ---------- */
+.yxq-article p {
+    color: #3a4657;
+    font-size: 16px;
+    margin: 0 0 18px;
+}
+.yxq-article p:last-child {
+    margin-bottom: 0;
+}
+.yxq-article strong,
+.yxq-article b {
+    font-weight: 700;
+    color: #18202e;
+}
+.yxq-article em {
+    font-style: italic;
+    color: #3d4a5c;
+}
+.yxq-article mark {
+    background: linear-gradient(transparent 55%, #f7e3b5 55%);
+    color: #5a4716;
+    padding: 0 3px;
+    border-radius: 3px;
+}
+.yxq-article del {
+    color: #9aa3b2;
+}
+.yxq-article small {
+    color: #8a94a6;
+    font-size: 13px;
+}
+.yxq-article u {
+    text-decoration-color: #c98a2d;
+}
+/* ---------- 链接 ---------- */
+.yxq-article a {
+    color: #b7791f;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(183, 121, 31, 0.35);
+    transition: color 0.2s, border-color 0.2s;
+}
+.yxq-article a:hover {
+    color: #8a5a12;
+    border-bottom-color: #8a5a12;
+}
+/* ---------- 列表 ---------- */
+.yxq-article ul,
+.yxq-article ol {
+    margin: 0 0 18px;
+    padding-left: 1.4em;
+    color: #3a4657;
+}
+.yxq-article ul {
+    list-style: disc;
+}
+.yxq-article ol {
+    list-style: decimal;
+}
+.yxq-article li {
+    margin: 6px 0;
+}
+.yxq-article li::marker {
+    color: #c98a2d;
+}
+/* 对勾列表：<ul class="yxq-list-check"><li>…</li></ul> */
+.yxq-article .yxq-list-check {
+    list-style: none;
+    padding-left: 0;
+}
+.yxq-article .yxq-list-check li {
+    position: relative;
+    padding-left: 30px;
+}
+.yxq-article .yxq-list-check li::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f058";
+    color: #c98a2d;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    font-size: 15px;
+}
+/* ---------- 引用 ---------- */
+.yxq-article blockquote {
+    margin: 24px 0;
+    padding: 16px 22px 16px 24px;
+    border-left: 4px solid #d9a441;
+    background: #fdf9ef;
+    border-radius: 0 12px 12px 0;
+    color: #5a4a28;
+    font-size: 15.5px;
+}
+.yxq-article blockquote p:last-child {
+    margin-bottom: 0;
+}
+/* ---------- 表格 ---------- */
+.yxq-article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14.5px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px -10px rgba(23, 32, 46, 0.25);
+}
+.yxq-article th {
+    background: #22324a;
+    color: #ffffff;
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.yxq-article td {
+    padding: 11px 14px;
+    border-bottom: 1px solid #e9edf4;
+    color: #3a4657;
+}
+.yxq-article tr:nth-child(even) td {
+    background: #f8fafd;
+}
+.yxq-article tr:last-child td {
+    border-bottom: none;
+}
+/* ---------- 代码 ---------- */
+.yxq-article code {
+    background: #f1f3f7;
+    border: 1px solid #e4e8ef;
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-family: Consolas, Menlo, monospace;
+    font-size: 13.5px;
+    color: #b7791f;
+}
+.yxq-article pre {
+    background: #1e2735;
+    color: #e8edf5;
+    border-radius: 14px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    margin: 24px 0;
+    font-size: 13.5px;
+    line-height: 1.7;
+}
+.yxq-article pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+/* ---------- 分隔线 ---------- */
+.yxq-article hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2c08a, transparent);
+    margin: 36px 0;
+}
+/* ---------- 图片与媒体 ---------- */
+.yxq-article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+.yxq-article figure {
+    margin: 30px 0;
+    text-align: center;
+}
+.yxq-article figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 16px 34px -18px rgba(23, 32, 46, 0.42);
+}
+.yxq-article figcaption {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #8a94a6;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.yxq-article figcaption i {
+    color: #c98a2d;
+}
+.yxq-article iframe,
+.yxq-article video {
+    max-width: 100%;
+    border-radius: 14px;
+    margin: 20px 0;
+}
+/* ---------- 组件：标签胶囊 ---------- */
+.yxq-article .yxq-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 15px;
+    border: 1px solid rgba(201, 138, 45, 0.55);
+    color: #a06a12;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    background: #fdf6e7;
+    margin-bottom: 18px;
+}
+.yxq-article .yxq-pill i {
+    color: #c98a2d;
+}
+/* ---------- 组件：导语 ---------- */
+.yxq-article .yxq-lead {
+    font-size: 16px;
+    color: #4a5568;
+    margin: 0 0 18px;
+}
+/* ---------- 组件：标签行（顶部）与要点标签（文中） ---------- */
+.yxq-article .yxq-chips,
+.yxq-article .yxq-chips2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 4px 0 24px;
+    padding: 0;
+    list-style: none;
+}
+.yxq-article .yxq-chips > span,
+.yxq-article .yxq-chip,
+.yxq-article .yxq-chips2 > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f7f9fc;
+    border: 1px solid #e7ebf2;
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-size: 13.5px;
+    color: #33415a;
+}
+.yxq-article .yxq-chips i,
+.yxq-article .yxq-chip i,
+.yxq-article .yxq-chips2 i {
+    color: #c98a2d;
+}
+/* ---------- 组件：本文导读目录 ---------- */
+.yxq-article .yxq-toc {
+    background: #f8fafd;
+    border: 1px solid #e9edf4;
+    border-radius: 16px;
+    padding: 22px 26px;
+    margin: 0 0 30px;
+}
+.yxq-article .yxq-toc h3 {
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    color: #8a94a6;
+    font-weight: 700;
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.yxq-article .yxq-toc h3::after {
+    content: none;
+}
+.yxq-article .yxq-toc h3 i {
+    color: #c98a2d;
+}
+.yxq-article .yxq-toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 22px;
+}
+.yxq-article .yxq-toc a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #3a4657;
+    text-decoration: none;
+    border-bottom: none;
+    font-size: 14.5px;
+    padding: 7px 10px;
+    border-radius: 9px;
+    transition: background 0.2s, color 0.2s;
+}
+.yxq-article .yxq-toc a:hover {
+    background: #fdf6e7;
+    color: #a06a12;
+}
+.yxq-article .yxq-toc a i {
+    color: #c98a2d;
+    font-size: 13px;
+    width: 18px;
+    text-align: center;
+    flex: none;
+}
+/* ---------- 组件：章节标题行 ---------- */
+.yxq-article .yxq-h-sec {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+.yxq-article .yxq-h-sec .ic {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #2c4058, #3d5776);
+    box-shadow: 0 8px 16px -8px rgba(44, 64, 88, 0.55);
+    flex: none;
+}
+.yxq-article .yxq-h-sec h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: #18202e;
+    line-height: 1.35;
+    margin: 0;
+}
+.yxq-article .yxq-h-sec h2::after {
+    content: "";
+    display: block;
+    width: 36px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #d9a441, #e7b85c);
+    margin-top: 7px;
+}
+.yxq-article .yxq-h-sec .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #e2e6ee, transparent);
+}
+/* ---------- 组件：提示框 ---------- */
+.yxq-article .yxq-note {
+    display: flex;
+    gap: 14px;
+    background: linear-gradient(90deg, #fdf6e7, #fbf3e0);
+    border: 1px solid #f0dfb8;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin: 24px 0;
+    font-size: 14.5px;
+    color: #6b5b33;
+    line-height: 1.8;
+}
+.yxq-article .yxq-note > i {
+    color: #c98a2d;
+    font-size: 18px;
+    margin-top: 3px;
+    flex: none;
+}
+/* ---------- 组件：卡片网格 ---------- */
+.yxq-article .yxq-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 26px 0;
+}
+.yxq-article .yxq-card {
+    background: #f8fafd;
+    border: 1px solid #e9edf4;
+    border-radius: 16px;
+    padding: 22px 18px;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.yxq-article .yxq-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 26px -16px rgba(23, 32, 46, 0.35);
+    border-color: #e0c48a;
+}
+.yxq-article .yxq-card > i {
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #d9a441, #e7b85c);
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+.yxq-article .yxq-card h3 {
+    font-size: 15.5px;
+    color: #1b2434;
+    margin: 0 0 6px;
+}
+.yxq-article .yxq-card p {
+    font-size: 13.5px;
+    color: #66718a;
+    line-height: 1.75;
+    margin: 0;
+}
+/* ---------- 组件：结语深色块 ---------- */
+.yxq-article .yxq-concl {
+    position: relative;
+    overflow: hidden;
+    margin-top: 46px;
+    border-radius: 18px;
+    padding: 32px 34px;
+    background: linear-gradient(135deg, #16202e, #243650);
+    color: #eef2f7;
+}
+.yxq-article .yxq-concl::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(480px 200px at 12% -20%, rgba(231, 184, 92, 0.14), transparent 60%);
+    pointer-events: none;
+}
+.yxq-article .yxq-concl h2 {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+.yxq-article .yxq-concl h2::after {
+    content: none;
+}
+.yxq-article .yxq-concl h2 i {
+    color: #e7b85c;
+}
+.yxq-article .yxq-concl p {
+    color: #cdd7e4;
+    font-size: 15.5px;
+    margin: 0 0 20px;
+    position: relative;
+}
+/* ---------- 组件：CTA 按钮组 ---------- */
+.yxq-article .yxq-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    position: relative;
+}
+.yxq-article .yxq-cta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: linear-gradient(90deg, #d9a441, #e7b85c);
+    color: #2a2110;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 14.5px;
+    box-shadow: 0 10px 22px -10px rgba(231, 184, 92, 0.7);
+}
+/* ---------- 工具类 ---------- */
+.yxq-article .yxq-center {
+    text-align: center;
+}
+.yxq-article .yxq-muted {
+    color: #8a94a6;
+    font-size: 13.5px;
+}
+/* ---------- 响应式 ---------- */
+@media (max-width: 720px) {
+    .yxq-article {
+        padding: 6px 2px 30px;
+    }
+    .yxq-article h1 {
+        font-size: 23px;
+    }
+    .yxq-article h2 {
+        font-size: 19px;
+    }
+    .yxq-article .yxq-grid {
+        grid-template-columns: 1fr;
+    }
+    .yxq-article .yxq-toc ul {
+        grid-template-columns: 1fr;
+    }
+    .yxq-article .yxq-h-sec {
+        flex-wrap: wrap;
+    }
+    .yxq-article .yxq-h-sec .line {
+        display: none;
+    }
+    .yxq-article table {
+        font-size: 13.5px;
+    }
 }
