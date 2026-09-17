@@ -495,7 +495,7 @@
     justify-content: center;
     font-size: 19px;
     color: #ffffff;
-    background: linear-gradient(135deg, #2c4058, #3d5776);
+    background: linear-gradient(135deg, #3d5a80, #5a81a8);
     box-shadow: 0 8px 16px -8px rgba(44, 64, 88, 0.55);
     flex: none;
 }
